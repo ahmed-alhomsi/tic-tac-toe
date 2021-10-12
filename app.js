@@ -126,6 +126,7 @@ function playerWon(player) {
 function checkIfGameIsTied() {
     if(turnsLeft === 1) {
         alert('GameOver, A Tie!!');
+        window.location.reload();
     }
 }
 
