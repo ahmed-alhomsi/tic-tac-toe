@@ -1,5 +1,6 @@
 let currPlrDisplay = document.getElementById('current-player');
 const game = document.querySelector('.game-box');
+const infoDisplay = document.querySelector('.display-information');
 const restartBtn = document.querySelector('.restart-button');
 const firstRow = document.querySelector('#first-row');
 const secondRow = document.querySelector('#second-row');
@@ -119,14 +120,18 @@ function switchPlayer(target) {
 }
 
 function playerWon(player) {
-    alert(`The Player: ${player} Has Won!!`);
-    window.location.reload();
+    infoDisplay.textContent = `The Player: ${player} Has Won!!`;
+    setTimeout(()=>{
+        window.location.reload();
+    }, 1000);
 }
 
 function checkIfGameIsTied() {
     if(turnsLeft === 1) {
-        alert('GameOver, A Tie!!');
-        window.location.reload();
+        infoDisplay.textContent = 'GameOver, A Tie!!';
+        setTimeout(()=>{
+            window.location.reload();
+        }, 1000);
     }
 }
 
