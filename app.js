@@ -1,5 +1,7 @@
 let currPlrDisplay = document.getElementById('current-player');
 const game = document.querySelector('.game-box');
+const playerOResults = document.querySelector('#player-o-results');
+const playerXResults = document.querySelector('#player-x-results');
 const infoDisplay = document.querySelector('.display-information');
 const restartBtn = document.querySelector('.restart-button');
 const firstRow = document.querySelector('#first-row');
@@ -28,6 +30,23 @@ const secondDiagonal = [diagonalTwoOne, diagonalTwoTwo, diagonalTwoThree];
 let turnsLeft = 9;
 let currentPlayer = 1;
 currPlrDisplay.innerText = ': X';
+console.log(JSON.parse(localStorage.getItem('playerXScore')));
+
+//get scores from localStorage or initiate localStorage Items
+if(JSON.parse(localStorage.getItem('playerXScore')) === null) {
+    let playerXScore = 0;
+    localStorage.setItem('playerXScore', JSON.stringify(playerXScore));
+    playerXResults.textContent = JSON.parse(localStorage.getItem('playerXScore'));
+} else {
+    playerXResults.textContent = JSON.parse(localStorage.getItem('playerXScore'));
+}
+if(JSON.parse(localStorage.getItem('playerOScore')) === null) {
+    let playerOScore = 0;
+    localStorage.setItem('playerOScore', JSON.stringify(playerOScore));
+    playerOResults.textContent = JSON.parse(localStorage.getItem('playerOScore'));
+} else {
+    playerOResults.textContent = JSON.parse(localStorage.getItem('playerOScore'));
+}
 
 function checkIfGameIsWon() {
     /* check if any one of the players have won */
@@ -63,8 +82,10 @@ function checkRows(currentRow) {
     }
     for(let i = 0; i < rowArr.length; i++) {
         if(rowArr[i] === 'x' && rowArr[i+1] === 'x' && rowArr[i+2] === 'x') {
+            increaseScore(1);
             playerWon('x');
         } else if(rowArr[i] === 'o' && rowArr[i+1] === 'o' && rowArr[i+2] === 'o') {
+            increaseScore(2);
             playerWon('o');
         }
     }
@@ -81,8 +102,10 @@ function checkColumns(currentColumn) {
     }
     for(let i = 0; i < currentColumn.length; i++) {
         if(columnArr[i] === 'x' && columnArr[i+1] === 'x' && columnArr[i+2] === 'x') {
+            increaseScore(1);
             playerWon('x');
         } else if(columnArr[i] === 'o' && columnArr[i+1] === 'o' && columnArr[i+2] === 'o') {
+            increaseScore(2);
             playerWon('o');
         }
     }
@@ -99,8 +122,10 @@ function checkDiagonals(currentDiagonal) {
     }
     for(let i = 0; i < currentDiagonal.length; i++) {
         if(diagonalArr[i] === 'x' && diagonalArr[i+1] === 'x' && diagonalArr[i+2] === 'x') {
+            increaseScore(1);
             playerWon('x');
         } else if(diagonalArr[i] === 'o' && diagonalArr[i+1] === 'o' && diagonalArr[i+2] === 'o') {
+            increaseScore(2);
             playerWon('o');
         }
     }
@@ -135,6 +160,16 @@ function checkIfGameIsTied() {
     }
 }
 
+function increaseScore(player) {
+    if(player === 1) {
+        localStorage.setItem('playerXScore', JSON.stringify(parseInt(playerXResults.textContent) + 1));
+        playerXResults.textContent = parseInt(playerXResults.textContent) + 1;
+    } else {
+        localStorage.setItem('playerOScore', JSON.stringify(parseInt(playerOResults.textContent) + 1));
+        playerOResults.textContent = parseInt(playerOResults.textContent) + 1;
+    }
+}
+
 document.addEventListener('click', (e)=>{
     /* deal with the click event, invoke switching players and check if player has won */
     if(e.target.classList.contains('box')) {
@@ -154,4 +189,8 @@ document.addEventListener('click', (e)=>{
     }
 });
 
-restartBtn.addEventListener('click',()=>{window.location.reload()});
+restartBtn.addEventListener('click',()=>{
+    localStorage.removeItem('playerXScore');
+    localStorage.removeItem('playerOScore');
+    window.location.reload()
+});

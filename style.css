@@ -26,6 +26,39 @@ h1 {
     margin-bottom: .2em;
 }
 
+.flex {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.display-xscores {
+    position: absolute;
+    margin-right: 50em;
+    margin-top: 10.5em;
+    height: 25vh;
+    width: 10vw;
+}
+
+.display-oscores {
+    position: absolute;
+    margin-left: 40em;
+    margin-top: 12em;
+}
+
+#player-x-results {
+    position: absolute;
+    margin-top: 4.4em;
+    background-color: var(--X);
+}
+
+#player-o-results {
+    position: absolute;
+    margin-top: 3em;
+    margin-left: 3.2em;
+    background-color: var(--O);
+}
+
 .display-information {
     color: rgb(255, 57, 57);
 }

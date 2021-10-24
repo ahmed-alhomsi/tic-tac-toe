@@ -11,25 +11,33 @@
     <header> 
         <h1>Tic Tac Toe</h1>
         <h2>Current Player <span id="current-player"></span></h2>
+        <h1 class="display-information"></h1>
     </header>
-    <h1 class="display-information"></h1>
-    <div class="game-box">
-        <div class="container">
-            <div id="first-row" class="row">
-                <div id="column-one-one" class="box diagonal-one-one"></div>
-                <div id="column-two-one" class="box"></div>
-                <div id="column-three-one" class="box diagonal-two-one"></div>
+    <div class="flex">
+        <div class="display-xscores"> 
+            <div><span class="x"></span><span id="player-x-results"></span></div>
+        </div>
+        <div class="game-box">
+            <div class="container">
+                <div id="first-row" class="row">
+                    <div id="column-one-one" class="box diagonal-one-one"></div>
+                    <div id="column-two-one" class="box"></div>
+                    <div id="column-three-one" class="box diagonal-two-one"></div>
+                </div>
+                <div id="second-row" class="row">
+                    <div id="column-one-two" class="box"></div>
+                    <div id="column-two-two" class="box diagonal-two-two diagonal-one-two"></div>
+                    <div id="column-three-two" class="box"></div>
+                </div>
+                <div id="third-row" class="row">
+                    <div id="column-one-three" class="box diagonal-two-three"></div>
+                    <div id="column-two-three" class="box"></div>
+                    <div id="column-three-three" class="box diagonal-one-three"></div>
+                </div>
             </div>
-            <div id="second-row" class="row">
-                <div id="column-one-two" class="box"></div>
-                <div id="column-two-two" class="box diagonal-two-two diagonal-one-two"></div>
-                <div id="column-three-two" class="box"></div>
-            </div>
-            <div id="third-row" class="row">
-                <div id="column-one-three" class="box diagonal-two-three"></div>
-                <div id="column-two-three" class="box"></div>
-                <div id="column-three-three" class="box diagonal-one-three"></div>
-            </div>
+        </div>
+        <div class="display-oscores">
+            <div><span class="o"></span><span id="player-o-results"></span></div>
         </div>
     </div>
     <div class="restart-div">
