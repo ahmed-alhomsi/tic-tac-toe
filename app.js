@@ -30,7 +30,6 @@ const secondDiagonal = [diagonalTwoOne, diagonalTwoTwo, diagonalTwoThree];
 let turnsLeft = 9;
 let currentPlayer = 1;
 currPlrDisplay.innerText = ': X';
-console.log(JSON.parse(localStorage.getItem('playerXScore')));
 
 //get scores from localStorage or initiate localStorage Items
 if(JSON.parse(localStorage.getItem('playerXScore')) === null) {
@@ -148,7 +147,7 @@ function playerWon(player) {
     infoDisplay.textContent = `The Player: ${player} Has Won!!`;
     setTimeout(()=>{
         window.location.reload();
-    }, 1000);
+    }, 3000);
 }
 
 function checkIfGameIsTied() {
@@ -156,7 +155,7 @@ function checkIfGameIsTied() {
         infoDisplay.textContent = 'GameOver, A Tie!!';
         setTimeout(()=>{
             window.location.reload();
-        }, 1000);
+        }, 3000);
     }
 }
 
@@ -174,7 +173,7 @@ document.addEventListener('click', (e)=>{
     /* deal with the click event, invoke switching players and check if player has won */
     if(e.target.classList.contains('box')) {
         if(e.target.classList.contains('x') || e.target.classList.contains('o')) {
-            alert('Box is already full!!');
+            infoDisplay.textContent = 'Box is already full!!';
         } else {
             if(currentPlayer === 1) {
                 switchPlayer(e.target);
