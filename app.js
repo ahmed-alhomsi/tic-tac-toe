@@ -144,18 +144,14 @@ function switchPlayer(target) {
 }
 
 function playerWon(player) {
-    infoDisplay.textContent = `The Player: ${player} Has Won!!`;
-    setTimeout(()=>{
-        window.location.reload();
-    }, 3000);
+    alert(`The Player: ${player} Has Won!!`);
+    window.location.reload();
 }
 
 function checkIfGameIsTied() {
     if(turnsLeft === 1) {
-        infoDisplay.textContent = 'GameOver, A Tie!!';
-        setTimeout(()=>{
-            window.location.reload();
-        }, 3000);
+        alert('GameOver, A Tie!!');
+        window.location.reload();
     }
 }
 
